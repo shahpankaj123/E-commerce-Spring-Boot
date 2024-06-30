@@ -68,16 +68,14 @@ public class AuthController {
         final UserDetails userDetails =userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         Optional<User> optionaluser = userrepo.findFirstByEmail(userDetails.getUsername());
         final String jwt=jwtUtil.generateToken(userDetails.getUsername());
-
         if (optionaluser.isPresent()) {
-            User user = optionaluser.get();
-        
-            JSONObject jsonResponse = new JSONObject()
-                    .put("UserId", user.getId())
-                    .put("role", user.getRole());
-        
-            response.getWriter().write(jsonResponse.toString());
-        
+            response.getWriter().write(new JSONObject()
+            .put("UserId", optionaluser.get().getId())
+            .put("role", optionaluser.get().getRole())
+            .toString()
+            );
+            response.addHeader("Access-Control-Expose-Headers","Authorization");
+            response.addHeader("Access-Control-Allow-Headers","Authorization,X-PINGOTHER,Origin," + "X-Requested-With,Conent-Type,Accept,X-Custom-header");
             response.addHeader(HEADER_STRING, TOKEN_PREFIX + jwt);
         }
         
