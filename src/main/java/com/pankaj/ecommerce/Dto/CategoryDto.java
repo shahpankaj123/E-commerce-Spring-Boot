@@ -10,5 +10,5 @@ public class CategoryDto {
     public UUID id;
     public String name;
     public String description;
-    
+        
 }
