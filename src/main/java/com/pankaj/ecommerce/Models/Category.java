@@ -20,5 +20,9 @@ public class Category {
 
     @Lob
     private String description;
-    
+
+    public UUID getId() {
+        return categoryId;
+    }
+   
 }
