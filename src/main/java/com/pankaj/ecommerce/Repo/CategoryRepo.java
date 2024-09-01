@@ -9,5 +9,5 @@ import com.pankaj.ecommerce.Models.Category;
 
 @Repository
 public interface CategoryRepo extends JpaRepository<Category,UUID>{
-    
+
 }

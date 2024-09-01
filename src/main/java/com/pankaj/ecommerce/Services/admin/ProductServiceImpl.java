@@ -21,7 +21,8 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepo productRepo;
-
+     
+    @Autowired
     private CategoryRepo categoryRepo;
 
     public List<Product> GetallProduct(){
@@ -37,15 +38,15 @@ public class ProductServiceImpl implements ProductService{
         product.setPrice(productDto.getPrice());
         product.setQuantity(productDto.getQuantity());
         
-        if (productDto.getCategory() != null) {
-            Category category = categoryRepo.findById(productDto.getCategory().getId())
+        if (productDto.getCategory() != null && productDto.getCategory().getId() != null) {
+            Category category = categoryRepo.findById(productDto.getCategory().getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("Category not found"));
             product.setCategory(category);
         }
 
-        //if (imageFile != null && !imageFile.isEmpty()) {
-            //product.setImage(imageFile.getBytes());
-        //}
+        if (imageFile != null && !imageFile.isEmpty()) {
+            product.setImage(imageFile.getBytes());
+        }
 
         productRepo.save(product);
         return product;
