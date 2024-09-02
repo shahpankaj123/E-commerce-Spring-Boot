@@ -2,12 +2,14 @@ package com.pankaj.ecommerce.Services.admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pankaj.ecommerce.Dto.ProductDto;
+import com.pankaj.ecommerce.Exception.ResourceNotFoundException;
 import com.pankaj.ecommerce.Models.Category;
 import com.pankaj.ecommerce.Models.Product;
 import com.pankaj.ecommerce.Repo.CategoryRepo;
@@ -50,6 +52,11 @@ public class ProductServiceImpl implements ProductService{
 
         productRepo.save(product);
         return product;
+    }
+
+    public Product SingleProduct(Long Id) {
+        return productRepo.findById(Id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product with the given Id does not exist"));
     }
     
 }

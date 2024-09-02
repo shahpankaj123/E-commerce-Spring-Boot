@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "6718071a-56df-4380-b2c1-c1caf3a898d3",
+		"name": "java-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28967857"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\":\"pshah00@gmail.com\",\n  \"password\":\"Pankaj123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"pshah00@gmail.com\",\n    \"name\":\"Ram shah\",\n    \"password\":\"Pankaj123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/sign-up",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwc2hhaDAwQGdtYWlsLmNvbSIsImlhdCI6MTcyNTI4NzI4NSwiZXhwIjoxNzI1MzA1Mjg1fQ.tauK2KyBw6RSA8icLiWfkfrrac_pCpbJ-D7t5EovPm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Laptop\",\n    \"description\":\"Laptop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/admin/category-create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"category-create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-category-by-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwc2hhaDAwQGdtYWlsLmNvbSIsImlhdCI6MTcyNTEwNjgwNywiZXhwIjoxNzI1MTI0ODA3fQ.e8ewlflDbBGZHm0DdjSdvsJwyb3MOMtRUlDBD5r9mYM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/admin/category-get?id=6e6748ad-4d0f-4436-a5cc-d9f60c4a9cce",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"category-get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6e6748ad-4d0f-4436-a5cc-d9f60c4a9cce"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwc2hhaDAwQGdtYWlsLmNvbSIsImlhdCI6MTcyNTI4NzI4NSwiZXhwIjoxNzI1MzA1Mjg1fQ.tauK2KyBw6RSA8icLiWfkfrrac_pCpbJ-D7t5EovPm4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/admin/product/list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"product",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwc2hhaDAwQGdtYWlsLmNvbSIsImlhdCI6MTcyNTI4NzI4NSwiZXhwIjoxNzI1MzA1Mjg1fQ.tauK2KyBw6RSA8icLiWfkfrrac_pCpbJ-D7t5EovPm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "postman-cloud:///1ef67966-f2cd-4860-ab52-07bfd609ff31"
+						},
+						{
+							"key": "name",
+							"value": "shoes",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "237f22b9-0c6b-4307-82e0-086dd8af58d8",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "best shoes",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/admin/product-create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"product-create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwc2hhaDAwQGdtYWlsLmNvbSIsImlhdCI6MTcyNTI4NzI4NSwiZXhwIjoxNzI1MzA1Mjg1fQ.tauK2KyBw6RSA8icLiWfkfrrac_pCpbJ-D7t5EovPm4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/admin/single-product?Id=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"single-product"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

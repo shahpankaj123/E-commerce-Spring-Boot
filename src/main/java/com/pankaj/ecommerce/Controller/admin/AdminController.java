@@ -2,6 +2,7 @@ package com.pankaj.ecommerce.Controller.admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,12 @@ public class AdminController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(400).body(null);
         }
+    }
+
+    @GetMapping("single-product")
+    public ResponseEntity<?> getproductById(@RequestParam Long Id){
+        Product product= productService.SingleProduct(Id);
+        return ResponseEntity.ok(product);
     }
 
 

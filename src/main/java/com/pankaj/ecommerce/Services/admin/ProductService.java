@@ -9,5 +9,6 @@ import com.pankaj.ecommerce.Models.Product;
 
 public interface ProductService {
     public List<Product> GetallProduct(); 
-    public Product create_product(ProductDto productDto,MultipartFile imageFile) throws Exception;  
+    public Product create_product(ProductDto productDto,MultipartFile imageFile) throws Exception; 
+    public Product SingleProduct(Long Id);
 }
