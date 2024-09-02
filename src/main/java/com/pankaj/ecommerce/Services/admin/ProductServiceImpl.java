@@ -53,7 +53,6 @@ public class ProductServiceImpl implements ProductService{
         productRepo.save(product);
         return product;
     }
-
     public Product SingleProduct(Long Id) {
         return productRepo.findById(Id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with the given Id does not exist"));
