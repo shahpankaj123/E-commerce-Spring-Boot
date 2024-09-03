@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pankaj.ecommerce.Dto.ProductDto;
+import com.pankaj.ecommerce.Dto.ProductSingleDto;
 import com.pankaj.ecommerce.Exception.ResourceNotFoundException;
 import com.pankaj.ecommerce.Models.Category;
 import com.pankaj.ecommerce.Models.Product;
@@ -53,9 +54,23 @@ public class ProductServiceImpl implements ProductService{
         productRepo.save(product);
         return product;
     }
-    public Product SingleProduct(Long Id) {
-        return productRepo.findById(Id)
+    public ProductSingleDto SingleProduct(Long Id) {
+        Product product=productRepo.findById(Id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with the given Id does not exist"));
+
+        ProductSingleDto productSingleDto  = new ProductSingleDto();
+
+        productSingleDto.setName(product.getName());
+        productSingleDto.setPrice(product.getPrice());
+        productSingleDto.setDescription(product.getDescription());
+        productSingleDto.setCategoryName(product.getCategory().getName());
+        productSingleDto.setProductId(product.getProductId());
+        productSingleDto.setQuantity(product.getQuantity());
+
+        return productSingleDto;
+
+
+
     }
     
 }

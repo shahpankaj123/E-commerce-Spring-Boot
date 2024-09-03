@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pankaj.ecommerce.Dto.CategoryDto;
 import com.pankaj.ecommerce.Dto.ProductDto;
+import com.pankaj.ecommerce.Dto.ProductSingleDto;
 import com.pankaj.ecommerce.Models.Category;
 import com.pankaj.ecommerce.Models.Product;
 import com.pankaj.ecommerce.Services.admin.CategoryService;
@@ -74,8 +75,8 @@ public class AdminController {
 
     @GetMapping("single-product")
     public ResponseEntity<?> getproductById(@RequestParam Long Id){
-        Product product= productService.SingleProduct(Id);
-        return ResponseEntity.ok(product);
+        ProductSingleDto productSingleDto= productService.SingleProduct(Id);
+        return ResponseEntity.ok(productSingleDto);
     }
 
 
