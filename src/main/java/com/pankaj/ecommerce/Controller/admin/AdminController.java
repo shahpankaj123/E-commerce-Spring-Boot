@@ -72,8 +72,6 @@ public class AdminController {
             return ResponseEntity.status(400).body(null);
         }
     }
-
-
     
     @GetMapping("single-product")
     public ResponseEntity<?> getproductById(@RequestParam Long Id){
