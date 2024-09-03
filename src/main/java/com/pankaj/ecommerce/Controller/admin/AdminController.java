@@ -81,5 +81,11 @@ public class AdminController {
         return ResponseEntity.ok(productSingleDto);
     }
 
+    @GetMapping("product-category-wise")
+    public ResponseEntity<?> getproductBycategoryId(@RequestParam UUID Id){
+        ProductSingleDto productSingleDto= productService.ProductByCategory(Id);
+        return ResponseEntity.ok(productSingleDto);
+    }
+
 }
 

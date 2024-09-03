@@ -1,6 +1,7 @@
 package com.pankaj.ecommerce.Services.admin;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,4 +13,5 @@ public interface ProductService {
     public List<Product> GetallProduct(); 
     public Product create_product(ProductDto productDto,MultipartFile imageFile) throws Exception; 
     public ProductSingleDto SingleProduct(Long Id);
+    public ProductSingleDto ProductByCategory(UUID Id);
 }

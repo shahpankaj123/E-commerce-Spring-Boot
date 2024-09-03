@@ -2,6 +2,7 @@ package com.pankaj.ecommerce.Services.admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,26 @@ public class ProductServiceImpl implements ProductService{
         productSingleDto.setQuantity(product.getQuantity());
 
         return productSingleDto;
-
-
-
     }
+    
+    public ProductSingleDto ProductByCategory(UUID Id) {
+        Category category = categoryRepo.findById(Id)
+            .orElseThrow(() -> new ResourceNotFoundException("Category with the given Id does not exist"));
+
+        Product product = productRepo.findByCategory(category)
+            .orElseThrow(() -> new ResourceNotFoundException("Product with the given Category Id does not exist"));
+
+        ProductSingleDto productSingleDto  = new ProductSingleDto();
+
+        productSingleDto.setName(product.getName());
+        productSingleDto.setPrice(product.getPrice());
+        productSingleDto.setDescription(product.getDescription());
+        productSingleDto.setCategoryName(product.getCategory().getName());
+        productSingleDto.setProductId(product.getProductId());
+        productSingleDto.setQuantity(product.getQuantity());
+
+        return productSingleDto;
+    }
+
     
 }
