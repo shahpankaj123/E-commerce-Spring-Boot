@@ -13,5 +13,5 @@ public interface ProductService {
     public List<Product> GetallProduct(); 
     public Product create_product(ProductDto productDto,MultipartFile imageFile) throws Exception; 
     public ProductSingleDto SingleProduct(Long Id);
-    public ProductSingleDto ProductByCategory(UUID Id);
+    public List<ProductSingleDto> ProductByCategory(UUID Id);
 }

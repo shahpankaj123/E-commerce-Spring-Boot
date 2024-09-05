@@ -16,6 +16,8 @@ import com.pankaj.ecommerce.Models.Category;
 import com.pankaj.ecommerce.Models.Product;
 import com.pankaj.ecommerce.Repo.CategoryRepo;
 import com.pankaj.ecommerce.Repo.ProductRepo;
+import java.util.stream.Collectors;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -71,24 +73,26 @@ public class ProductServiceImpl implements ProductService{
         return productSingleDto;
     }
     
-    public ProductSingleDto ProductByCategory(UUID Id) {
+    public List<ProductSingleDto> ProductByCategory(UUID Id) {
         Category category = categoryRepo.findById(Id)
             .orElseThrow(() -> new ResourceNotFoundException("Category with the given Id does not exist"));
 
-        Product product = productRepo.findByCategory(category)
-            .orElseThrow(() -> new ResourceNotFoundException("Product with the given Category Id does not exist"));
+        List<Product> products = productRepo.findByCategory(category);
+            
 
-        ProductSingleDto productSingleDto  = new ProductSingleDto();
-
-        productSingleDto.setName(product.getName());
-        productSingleDto.setPrice(product.getPrice());
-        productSingleDto.setDescription(product.getDescription());
-        productSingleDto.setCategoryName(product.getCategory().getName());
-        productSingleDto.setProductId(product.getProductId());
-        productSingleDto.setQuantity(product.getQuantity());
-
-        return productSingleDto;
-    }
+        List<ProductSingleDto> productDtos = products.stream().map(product -> {
+                ProductSingleDto productSingleDto = new ProductSingleDto();
+                productSingleDto.setName(product.getName());
+                productSingleDto.setPrice(product.getPrice());
+                productSingleDto.setDescription(product.getDescription());
+                productSingleDto.setCategoryName(product.getCategory().getName());
+                productSingleDto.setProductId(product.getProductId());
+                productSingleDto.setQuantity(product.getQuantity());
+                return productSingleDto;
+        }).collect(Collectors.toList());
+        
+        return productDtos;
+    } 
 
     
 }
