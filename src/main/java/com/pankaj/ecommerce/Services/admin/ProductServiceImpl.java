@@ -93,6 +93,24 @@ public class ProductServiceImpl implements ProductService{
         
         return productDtos;
     } 
+    public List<ProductSingleDto> SearchProductBykey(String key){
+
+        List<Product> products=productRepo.findByName(key);
+
+        List<ProductSingleDto> productDtos = products.stream().map(product -> {
+            ProductSingleDto productSingleDto = new ProductSingleDto();
+            productSingleDto.setName(product.getName());
+            productSingleDto.setPrice(product.getPrice());
+            productSingleDto.setDescription(product.getDescription());
+            productSingleDto.setCategoryName(product.getCategory().getName());
+            productSingleDto.setProductId(product.getProductId());
+            productSingleDto.setQuantity(product.getQuantity());
+            return productSingleDto;
+        }).collect(Collectors.toList());
+
+    return productDtos;
+
+    }
 
     
 }

@@ -11,5 +11,6 @@ import com.pankaj.ecommerce.Models.Product;
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Long>{
    List<Product> findByCategory(Category category);
+   List<Product> findByName(String key);
 
 }

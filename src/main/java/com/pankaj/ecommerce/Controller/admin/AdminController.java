@@ -84,6 +84,12 @@ public class AdminController {
         List<ProductSingleDto> productSingleDto= productService.ProductByCategory(Id);
         return productSingleDto;
     }
+    @GetMapping("product/search")
+    public ResponseEntity<List<ProductSingleDto>> searchproduct(@RequestParam String key){
+        List<ProductSingleDto> productSingleDto= productService.SearchProductBykey(key);
+        return ResponseEntity.status(200).body(productSingleDto);
+        
+    }
 
 }
 
